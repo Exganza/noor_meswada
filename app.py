@@ -42,16 +42,16 @@ def app() -> None:
     '''
     main app running.
     '''
-    wb = openpyxl.load_workbook('data.xlsx') 
+    wb = openpyxl.load_workbook('resources/data.xlsx') 
     sheets_count = len(wb.sheetnames)
     main_df = pd.DataFrame()
 
     for i in tqdm(range(sheets_count)):
-        sheet = pd.read_excel('data.xlsx', sheet_name=i)
+        sheet = pd.read_excel('resources/data.xlsx', sheet_name=i)
         df = dataCleaning(sheet)
         main_df = main_df.append(df)
 
-    main_df.to_csv('combined.csv', encoding='utf-8-sig', index=False)
+    main_df.to_csv('resources/combined.csv', encoding='utf-8-sig', index=False)
 
 
 if __name__ == "__main__":
