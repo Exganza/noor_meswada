@@ -42,14 +42,12 @@ def app() -> None:
     '''
     main app running.
     '''
-    wb = openpyxl.load_workbook('تحليل.xlsx') 
+    wb = openpyxl.load_workbook('data.xlsx') 
     sheets_count = len(wb.sheetnames)
     main_df = pd.DataFrame()
 
     for i in tqdm(range(sheets_count)):
-
-        sheet = pd.read_excel('تحليل.xlsx', sheet_name=i)
-        sheet.to_csv('xx.csv', encoding='utf-8-sig', index=False)
+        sheet = pd.read_excel('data.xlsx', sheet_name=i)
         df = dataCleaning(sheet)
         main_df = main_df.append(df)
 
